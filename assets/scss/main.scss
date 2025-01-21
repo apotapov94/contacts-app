@@ -1,0 +1,173 @@
+$mainColor: #F4F7FA;
+$rowColor: #fff;
+$rowColor2: #F9FBFC;
+$theadColor: #4B6A9B;
+$textColor: #333333;
+$inputColor: #8a8a8a;
+
+body {
+    background: $mainColor;
+    color: $textColor;
+}
+main {
+    padding: 64px 0;
+}
+input {
+    background: #fff;
+    padding: 12px 12px;
+    color: #495057;
+    outline: none;
+    border: 0;
+    border-radius: 4px;
+}
+.input-block {
+    position: relative;
+}
+.form {
+    margin-bottom: 32px;
+}
+.btn {
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    &-type-a {
+        background: #28A745;
+        color: #fff;
+        &:hover {
+            background:#0056b3;
+        }
+    }
+    &-type-b {
+        background: #FFC107;
+        color: #000;
+        &:hover {
+            background:#FFA000;
+        }
+    }
+    &-type-c {
+        background: #DC3545;
+        color: #fff;
+        &:hover {
+            background:#C82333;
+        }
+    }
+}
+
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.contacts-item {
+    display: grid;
+    grid-template-columns: 10% 25% 20% 25% 20%;
+    border-bottom: 1px solid #E1E4E8;
+    background: $rowColor;
+    cursor: pointer;
+    &:nth-child(even) {
+        background: $rowColor2;
+    }
+    &:hover {
+        background: #F0F8FF;
+    }
+    &__cell {
+        padding: 16px 32px;
+    }
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    &.active {
+        background: #F0F8FF;
+    }
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logo {
+        font-size: 54px;
+        color: #b5caff;
+        text-decoration: none;
+    }
+    &-wrap {
+        background: #000;
+        padding: 16px 0;
+    }
+    &__menu {
+        
+        ul {
+            list-style: none;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
+.footer {
+    &-wrap {
+        background: #000;
+        padding: 16px 0;
+    }
+}
+.contacts-list {
+    background: $rowColor;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E1E4E8;
+    &__head {
+        background: $theadColor;
+        color: #fff;
+    }
+    &__head:hover {
+       background: $theadColor;
+    }
+    
+}
+.filter {
+    margin-bottom: 32px;
+    .variants {
+        background: #eee;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        box-shadow: 1px 1px 4px #b6b6b6;
+        position: absolute;
+        left: 0;
+        right: 0;
+        li {
+            cursor: pointer;
+            padding: 8px 12px;
+            &:focus {
+                background: #4B6A9B;
+                color: #fff;
+            }
+            &:hover {
+                background: #4B6A9B;
+                color: #fff;
+            }
+            &.active {
+                background: #4B6A9B;
+                color: #fff;
+            }
+        }
+    }
+}
+.func-block {
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 0 2px #788aff;
+    background: #D1E7FF;
+    .inputs {
+        display: flex;
+        gap: 16px;
+    }
+}
