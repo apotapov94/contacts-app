@@ -72,11 +72,11 @@
         } else{
             curContact = search.results.value[activeVariant.value];
         }
-        nameInput.value = curContact.Name;
-        emit('getContact', curContact.ID); 
-        search.results.value = [];
-        console.log(curContact.Name);
-        
+        if(curContact){
+            nameInput.value = curContact.Name;
+            emit('getContact', curContact.ID); 
+            search.results.value = [];
+        }
     }
 
     function debounce(callee, timeoutMs) {
