@@ -26,9 +26,10 @@ export const useContactsStore = defineStore('constactsStore', {
                 }).then(()=>{
                     this.fetchContacts();
                 })
-
             } catch (e) {
+                this.fetchContacts();
                 console.log(e)
+
             }
         },
         async deleteContact(payload){
@@ -57,16 +58,12 @@ export const useContactsStore = defineStore('constactsStore', {
                         id: payload.id,
                         data: payload.data
                     }
-                
                 }).then(()=>{
                     this.fetchContacts();
                 })
-
-                this.setLoading(false);
             } catch (e) {
                 
                 this.fetchContacts();
-                this.setLoading(false);
                 console.log(e)
             }
             

@@ -5,6 +5,7 @@
         <Filter @resetFilter="onResetFilter" @getContact="(id) => onGetContactByID(id)" />
         <AddContactForm @addContact="(fields) => addContact(fields)" />
         <ContactsList :contacts="filtered.value.length > 0 ? filtered.value : contactsStore.contacts" />
+        <div class="loading-mask" v-if="contactsStore.loading"><span class="loader"></span></div>
     </div>
 </template>
 
@@ -16,6 +17,9 @@
     const filtered = computed(() => {
         return contacts
     })
+
+
+
     onBeforeMount(async () => {
         contactsStore.fetchContacts();
     })

@@ -1,13 +1,14 @@
 <template>
     
-    
-    <div class="contacts-list">
+    <p v-if="!contacts.length" class="message message-warn">В таблице пока нет контактов!</p>
+    <div v-else class="contacts-list">
         <div class="contacts-item contacts-list__head">
             <div class="contacts-item__cell contacts-item__id">ID</div>
             <div class="contacts-item__cell contacts-item__name">Имя</div>
             <div class="contacts-item__cell contacts-item__phone">Телефон</div>
             <div class="contacts-item__cell contacts-item__email">Email</div>
         </div>
+        
         <ContactsItem 
             @saveChanges="(data) => contactsStore.editContact(data)"
             @deleteItem="(id) => contactsStore.deleteContact(id)" v-if="contacts" v-for="contact in contacts" :contact="contact" />
