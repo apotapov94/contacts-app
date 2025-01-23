@@ -1,8 +1,7 @@
 export default defineEventHandler(async(event) => {
     const requestBody = await readBody(event);
     const db = useDatabase("contacts");
-    const test = "'" + requestBody.term + "%'";
-    //const contacts = await db.sql`SELECT * FROM contacts WHERE Name LIKE '%${requestBody.term}%'`;
+
     const contacts = await db.sql`SELECT * FROM contacts WHERE Name LIKE ${'%' + requestBody.term + '%'}`;
     if(contacts){
         return contacts.rows;

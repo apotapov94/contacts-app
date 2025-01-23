@@ -44,14 +44,12 @@
 
         if(search.results.value){
             if(mode == 'down'){
-                console.log('down')
                 if(activeVariant.value < search.results.value.length - 1){
                     activeVariant.value++;
                 } else if(activeVariant.value == search.results.value.length - 1){
                     activeVariant.value = 0;
                 }
             } else if(mode == 'up') {
-                console.log('up')
                 if(activeVariant.value > 0){
                     activeVariant.value--;
                 } else if(activeVariant.value == 0){
