@@ -26,7 +26,7 @@
         return contactsStore.loading
     })
     function onResetFilter(){
-        contacts.value = contactsStore.contacts
+        contacts.value = [];
     }
     function onGetContactByID(id){
         contacts.value = contactsStore.getContactByID(id);
