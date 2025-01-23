@@ -1,6 +1,6 @@
 <template>
     
-    <AddContactForm @addContact="(fields) => contactsStore.addContact(fields)" />
+    
     <div class="contacts-list">
         <div class="contacts-item contacts-list__head">
             <div class="contacts-item__cell contacts-item__id">ID</div>

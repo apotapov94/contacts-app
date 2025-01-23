@@ -37,8 +37,6 @@
         } else {
             search.results.value = [];
         }
-        
-
     }
     function toggleVariant(mode = 'up'){
 
@@ -77,20 +75,21 @@
         }
     }
 
-    function debounce(callee, timeoutMs) {
-        return function perform(...args) {
-            let previousCall = this.lastCall
 
-            this.lastCall = Date.now()
-
-            if (previousCall && this.lastCall - previousCall <= timeoutMs) {
-            clearTimeout(this.lastCallTimer)
-            }
-
-            this.lastCallTimer = setTimeout(() => callee(...args), timeoutMs)
+    function debounce(func, delay) {
+        let timeoutId;
+        
+        return function executedFunction(...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
         }
-    }
-    
-const deboundedSearchContacts = debounce(searchContacts, 250)
+
+        const debouncedSearch = debounce(() => {
+            searchContacts
+        }, 300);
+
+
+    const deboundedSearchContacts = debounce(searchContacts, 250)
 
 </script>

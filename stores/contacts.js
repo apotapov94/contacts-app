@@ -9,10 +9,11 @@ export const useContactsStore = defineStore('constactsStore', {
         async fetchContacts() {
             const data = await $fetch("/api/contacts")  
             if(data){
-              this.contacts = data;
+                this.contacts = data;
             }
             this.setLoading(false);
         },
+
         setLoading(payload){
             this.loading = payload;
         },
@@ -22,10 +23,11 @@ export const useContactsStore = defineStore('constactsStore', {
                 $fetch("/api/add-contact", {
                     method: 'POST',
                     body: payload
+                }).then(()=>{
+                    this.fetchContacts();
                 })
-                this.fetchContacts();
+
             } catch (e) {
-                this.fetchContacts();
                 console.log(e)
             }
         },
@@ -37,8 +39,10 @@ export const useContactsStore = defineStore('constactsStore', {
                     body: {
                         id: payload
                     }
+                }).then(()=>{
+                    this.fetchContacts();
                 })
-                this.fetchContacts();
+
             } catch (e) {
                 this.fetchContacts();
                 console.log(e)
@@ -54,9 +58,10 @@ export const useContactsStore = defineStore('constactsStore', {
                         data: payload.data
                     }
                 
+                }).then(()=>{
+                    this.fetchContacts();
                 })
-                
-                this.fetchContacts();
+
                 this.setLoading(false);
             } catch (e) {
                 

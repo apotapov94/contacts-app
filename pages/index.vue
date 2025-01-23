@@ -1,8 +1,10 @@
 <template>
     <div class="container">
         <h1>Главная</h1>
+
         <Filter @resetFilter="onResetFilter" @getContact="(id) => onGetContactByID(id)" />
-        <ContactsList :contacts="filtered.length > 0 ? filtered : contactsStore.contacts" />
+        <AddContactForm @addContact="(fields) => addContact(fields)" />
+        <ContactsList :contacts="filtered.value.length > 0 ? filtered.value : contactsStore.contacts" />
     </div>
 </template>
 
@@ -10,15 +12,15 @@
     import { useContactsStore } from '~/stores/contacts';
     
     const contactsStore = useContactsStore();
-    let contacts = ref([]);
+    let contacts = ref(contactsStore.contacts);
     const filtered = computed(() => {
-        return contacts.value
+        return contacts
     })
     onBeforeMount(async () => {
         contactsStore.fetchContacts();
     })
-    onUpdated(async () => {
-        contactsStore.fetchContacts();
+    onUpdated(() => {
+
     })
     const loading = computed(() => {
         return contactsStore.loading
@@ -27,9 +29,11 @@
         contacts.value = contactsStore.contacts
     }
     function onGetContactByID(id){
-        console.log(contactsStore.getContactByID(id));
         contacts.value = contactsStore.getContactByID(id);
     }
 
+    function addContact(fields){
+        contactsStore.addContact(fields);
+    }
     
 </script>
