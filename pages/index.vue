@@ -37,6 +37,7 @@
     }
 
     function addContact(fields){
+        onResetFilter();
         contactsStore.addContact(fields);
     }
     
